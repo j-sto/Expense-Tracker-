@@ -11,6 +11,22 @@ class Category
     @id = results.first['id'].to_i
   end
 
+  def self.all
+    categories =[]
+    results = DB.exec("SELECT * FROM categories;")
+    results.each do |result|
+      attributes = {
+        :name => result['name'],
+        :id => result['id'].to_i
+      }
+      current_category = Category.new(attributes)
+      categories << current_category
+    end
+    categories
+  end
 
+  def ==(another_category)
+    self.name == another_category.name && self.id == another_category.id
+  end
 
 end

@@ -19,7 +19,23 @@ describe Category do
 
  describe 'save' do
   it 'saves the category to the database and returns the id' do
-    expect(@test_category.save).to be_an_instance_of Fixnum
+    @test_category.save
+    expect(@test_category.id).to be_an_instance_of Fixnum
+    end
+  end
+
+  describe 'Self.all' do
+    it 'returns all of the saved categories' do
+      @test_category.save
+      expect(Category.all).to eq [@test_category]
+    end
+  end
+
+  describe '==(another_category)' do
+    it 'is true if two categories have the same attributes' do
+      @test_category.save
+      test_category1 = Category.new({:name => 'Food', :id => @test_category.id})
+      expect(test_category1).to eq @test_category
     end
   end
 
