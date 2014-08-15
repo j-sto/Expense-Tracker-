@@ -20,5 +20,5 @@ end
 def setup
   @test_category = Category.new({:name => 'Food'})
   @test_company = Company.new({:name => 'Wal-mart'})
-  @test_expense = Expense.new({:description => 'Oil Change', :date => '2014-03-21'})
+  @test_expense = Expense.new({:description => 'Oil Change', :amount => '9.99', :date => '2014-03-21'})
 end
