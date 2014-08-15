@@ -1,9 +1,10 @@
 class Category
-  attr_reader :name, :id
+  attr_reader :name, :id, :expense_id
 
   def initialize(attributes)
     @name = attributes[:name]
     @id = attributes[:id].to_i
+    @expense_id = attributes[:expense_id].to_i
   end
 
   def save
@@ -17,7 +18,8 @@ class Category
     results.each do |result|
       attributes = {
         :name => result['name'],
-        :id => result['id'].to_i
+        :id => result['id'].to_i,
+        :expense_id => result['expense_id'].to_i
       }
       current_category = Category.new(attributes)
       categories << current_category
@@ -26,7 +28,7 @@ class Category
   end
 
   def ==(another_category)
-    self.name == another_category.name && self.id == another_category.id
+    self.name == another_category.name && self.id == another_category.id && self.expense_id == another_category.expense_id
   end
 
 end

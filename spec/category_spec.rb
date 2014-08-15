@@ -34,7 +34,7 @@ describe Category do
   describe '==(another_category)' do
     it 'is true if two categories have the same attributes' do
       @test_category.save
-      test_category1 = Category.new({:name => 'Food', :id => @test_category.id})
+      test_category1 = Category.new({:name => 'Food', :id => @test_category.id, :expense_id => @test_category.expense_id})
       expect(test_category1).to eq @test_category
     end
   end
